@@ -43,6 +43,7 @@ Group 7: [BSCLMR123726](mailto\:BSCLMR123726@spu.ac.ke)-Emmanuel David GITAU
 &#x20;            BSCLMR435025-Stacy Nyambura Githua
 
 &#x20;           [BSCLMR109224](mailto\:BSCLMR109224@spu.ac.ke)-CLAIRE WAIRIMU KAMAU
+
 &#x20;           [bsclmr114224](mailto\:bsclmr114224@spu.ac.ke)-**Eric Gema**
 
 
