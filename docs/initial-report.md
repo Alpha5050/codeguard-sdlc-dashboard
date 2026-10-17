@@ -38,7 +38,16 @@ The system will cover five SDLC infrastructure areas: Endpoint/IDE, Version Cont
 
 ## 5. Proposed System Models
 
-This section will contain the use case diagram and class diagram illustrating the system's users, main functions, and key data entities.
+### 5.1 Use Case Diagram
+
+The use case diagram illustrates how the Security Analyst and Administrator interact with the CodeGuard system. It shows the main functions available to each user, including recording security findings, viewing dashboard statistics, updating findings, and managing user access.
+
+**Figure 1: CodeGuard Use Case Diagram**
+
+
+
+
+
 
 ## 6. References
 
