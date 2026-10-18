@@ -50,8 +50,14 @@ The use case diagram illustrates how the Security Analyst and Administrator inte
 ![CodeGuard Use Case Diagram](soft2security-Page-3.drawio.png)
 
 
+## 6. Application of Lean Software Development
 
-## 6. References
+CodeGuard will adopt Lean Software Development principles by focusing on delivering essential functionality, reducing unnecessary work, and improving the system through continuous feedback. The team will prioritize core features such as security finding management, severity categorization, status tracking, and dashboard visualization before implementing additional features.
+
+Development will be carried out incrementally, allowing the group to test individual components, identify defects early, and improve the system based on feedback. Version control through GitHub and task tracking through Trello will support collaboration, transparency, and continuous improvement.
+
+## 7. References
 
 - SDLC Infrastructure Threat Framework (SITF). https://wiz-sec-public.github.io/SITF/
-- Berkovich, S. (2026, March 20). *Securing the Code Factory: Why SDLC Infrastructure Has Become a Core Cloud Risk.*
+- Berkovich, S. (2026, March 20). *Securing the Code Factory: Why SDLC Infrastructure Has Become a Core Cloud Risk.*SD Times. https://sdtimes.com/author/shay-berkovich/
+- MindInventory. (n.d.). Lean Software Development. https://www.mindinventory.com/blog/lean-software-development/
