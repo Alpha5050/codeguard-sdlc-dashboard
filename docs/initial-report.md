@@ -46,6 +46,8 @@ The use case diagram illustrates how the Security Analyst and Administrator inte
 
 ![CodeGuard Use Case Diagram](soft2security-Page-2.drawio.png)
 
+### 5.2 Class Diagram
+![CodeGuard Use Case Diagram](soft2security-Page-3.drawio.png)
 
 
 
