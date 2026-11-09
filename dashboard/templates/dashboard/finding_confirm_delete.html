@@ -1,0 +1,38 @@
+
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Delete Finding | CodeGuard{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+    <div class="eyebrow">SECURITY MANAGEMENT</div>
+    <h1>Delete Security Finding</h1>
+    <p>Confirm whether you want to remove this security record.</p>
+</div>
+
+<div class="content-card">
+    <h2>Are you sure?</h2>
+
+    <p>
+        You are about to delete:
+        <strong>{{ finding.title }}</strong>
+    </p>
+
+    <p>This action cannot be undone.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <button type="submit" class="btn">
+            Yes, Delete Finding
+        </button>
+
+        <a href="{% url 'finding_list' %}" class="btn btn-secondary">
+            Cancel
+        </a>
+    </form>
+</div>
+
+{% endblock %}
+

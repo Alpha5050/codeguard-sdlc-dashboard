@@ -1,0 +1,55 @@
+
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Add Finding | CodeGuard{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+    <div class="eyebrow">SECURITY MANAGEMENT</div>
+    <h1>Add Security Finding</h1>
+    <p>Record and classify a security issue affecting SDLC infrastructure.</p>
+</div>
+
+<div class="content-card">
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+        {% endif %}
+
+        <div class="form-grid">
+
+            {% for field in form %}
+                <div class="form-field {% if field.name == 'description' %}full{% endif %}">
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <small>{{ field.help_text }}</small>
+                    {% endif %}
+
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <button type="submit" class="btn">
+            Save Security Finding
+        </button>
+
+        <a href="{% url 'finding_list' %}" class="btn btn-secondary">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+{% endblock %}
