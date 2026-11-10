@@ -1,0 +1,168 @@
+
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Dashboard | CodeGuard{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+    <div class="eyebrow">SDLC SECURITY MANAGEMENT</div>
+    <h1>Security Overview</h1>
+    <p>Monitor and manage security findings across your software development lifecycle.</p>
+</div>
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <div class="stat-label">TOTAL FINDINGS</div>
+        <div class="stat-number">{{ total_findings }}</div>
+        <div class="stat-note">Recorded security issues</div>
+    </div>
+
+    <div class="stat-card open">
+        <div class="stat-label">OPEN FINDINGS</div>
+        <div class="stat-number">{{ open_findings }}</div>
+        <div class="stat-note">Require attention</div>
+    </div>
+
+    <div class="stat-card critical">
+        <div class="stat-label">CRITICAL FINDINGS</div>
+        <div class="stat-number">{{ critical_findings }}</div>
+        <div class="stat-note">Highest priority</div>
+    </div>
+
+    <div class="stat-card resolved">
+        <div class="stat-label">RESOLVED FINDINGS</div>
+        <div class="stat-number">{{ resolved_findings }}</div>
+        <div class="stat-note">Successfully addressed</div>
+    </div>
+
+</div>
+
+<div class="content-card chart-card">
+    <div class="section-header">
+        <div>
+            <h2>Security Analytics</h2>
+            <p>Visual breakdown of recorded security findings.</p>
+        </div>
+    </div>
+
+    <img
+        src="data:image/png;base64,{{ chart }}"
+        alt="Security findings charts"
+        class="dashboard-chart"
+    >
+</div>
+
+<div class="content-card">
+
+    <div class="section-header">
+        <form method="GET" class="filter-form">
+    <input
+        type="text"
+        name="search"
+        placeholder="Search findings..."
+        value="{{ search }}"
+    >
+
+    <select name="category">
+        <option value="">All Categories</option>
+        {% for value, label in categories %}
+            <option value="{{ value }}" {% if selected_category == value %}selected{% endif %}>
+                {{ label }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <select name="severity">
+        <option value="">All Severities</option>
+        {% for value, label in severities %}
+            <option value="{{ value }}" {% if selected_severity == value %}selected{% endif %}>
+                {{ label }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <select name="status">
+        <option value="">All Statuses</option>
+        {% for value, label in statuses %}
+            <option value="{{ value }}" {% if selected_status == value %}selected{% endif %}>
+                {{ label }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit" class="btn">Filter</button>
+    <a href="{% url 'finding_list' %}" class="btn btn-secondary">Reset</a>
+</form>
+        <div>
+            <h2>Security Findings</h2>
+            <p>Review and manage recorded security issues.</p>
+        </div>
+
+        <a href="{% url 'finding_create' %}" class="btn">
+            + Add Security Finding
+        </a>
+    </div>
+
+    {% if findings %}
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Finding</th>
+                    <th>Category</th>
+                    <th>Severity</th>
+                    <th>Status</th>
+                    <th>Date Created</th>
+                      <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for finding in findings %}
+                <tr>
+                    <td class="finding-title">{{ finding.title }}</td>
+                    <td>{{ finding.get_category_display }}</td>
+                    <td>
+                        <span class="badge badge-{{ finding.severity }}">
+                            {{ finding.get_severity_display }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge badge-{{ finding.status }}">
+                            {{ finding.get_status_display }}
+                        </span>
+                    </td>
+                    <td>{{ finding.created_at|date:"d M Y" }}</td>
+                    <td>
+    <a href="{% url 'finding_edit' finding.id %}" class="btn btn-secondary">
+        Edit
+
+          <a href="{% url 'finding_delete' finding.id %}" class="btn">
+        Delete
+    </a>
+    </a>
+</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% else %}
+
+    <div class="empty-state">
+        <h3>No security findings yet</h3>
+        <p>Start by recording your first SDLC infrastructure security finding.</p>
+        <a href="{% url 'finding_create' %}" class="btn">
+            + Record First Finding
+        </a>
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

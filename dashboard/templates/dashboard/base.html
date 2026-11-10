@@ -1,0 +1,57 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CodeGuard{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">🛡</div>
+            <div>
+                <div class="brand-name">CodeGuard</div>
+                <div class="brand-subtitle">SDLC SECURITY MANAGEMENT</div>
+            </div>
+        </div>
+
+        <div class="nav-label">WORKSPACE</div>
+
+        <a href="{% url 'finding_list' %}" class="nav-link active">
+            ◫ &nbsp; Dashboard
+        </a>
+
+        <a href="{% url 'finding_list' %}" class="nav-link">
+            ▤ &nbsp; Security Findings
+        </a>
+
+        <div class="nav-label" style="margin-top:35px;">SYSTEM</div>
+
+        <a href="/admin/" class="nav-link">
+            ⚙ &nbsp; Administration
+        </a>
+    </aside>
+
+    <main class="main-content">
+
+        <div class="topbar">
+            <div class="user-pill">
+                ● &nbsp; {{ request.user.username }}
+            </div>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+</div>
+
+</body>
+</html>
