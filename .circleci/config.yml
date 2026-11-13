@@ -7,39 +7,10 @@ jobs:
       - image: cimg/python:3.14
 
     working_directory: ~/project
-version: 2.1
-
-jobs:
-  test:
-    docker:
-      - image: cimg/python:3.14
-
-    working_directory: ~/project
 
     environment:
       DJANGO_SECRET_KEY: "ci-only-test-key-not-for-production"
 
-    steps:
-      - checkout
-
-      - run:
-          name: Install dependencies
-          command: |
-            python -m pip install --upgrade pip
-            pip install -r requirements.txt
-
-      - run:
-          name: Django system checks
-          command: python manage.py check
-
-      - run:
-          name: Run automated tests
-          command: python manage.py test dashboard
-
-workflows:
-  codeguard_pipeline:
-    jobs:
-      - test
     steps:
       - checkout
 
