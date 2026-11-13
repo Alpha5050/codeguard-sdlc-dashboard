@@ -22,6 +22,7 @@ CodeGuard aims to provide a centralized dashboard for tracking security findings
 
 ## 4. Proposed Technologies
 
+
 - **Programming language:** Python
 - **Web framework:** Django
 - **Data visualization:** Matplotlib
