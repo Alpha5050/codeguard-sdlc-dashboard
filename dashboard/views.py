@@ -97,3 +97,11 @@ def finding_delete(request, finding_id):
     return render(request, 'dashboard/finding_confirm_delete.html', {
         'finding': finding
     })
+
+@login_required(login_url='/admin/login/')
+def finding_detail(request, finding_id):
+    finding = get_object_or_404(SecurityFinding, id=finding_id)
+
+    return render(request, 'dashboard/finding_detail.html', {
+        'finding': finding
+    })

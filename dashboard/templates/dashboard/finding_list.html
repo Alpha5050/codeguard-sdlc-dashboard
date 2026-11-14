@@ -122,7 +122,9 @@
             <tbody>
                 {% for finding in findings %}
                 <tr>
-                    <td class="finding-title">{{ finding.title }}</td>
+                    <td class="finding-title"><a href="{% url 'finding_detail' finding.id %}">
+    {{ finding.title }}
+</a></td>
                     <td>{{ finding.get_category_display }}</td>
                     <td>
                         <span class="badge badge-{{ finding.severity }}">

@@ -1,0 +1,79 @@
+
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Security Finding Details</h1>
+    <p>Complete information about this security finding.</p>
+</div>
+
+<div class="finding-card">
+
+    <h2>{{ finding.title }}</h2>
+
+    <div class="finding-details">
+
+        <p>
+            <strong>Description:</strong><br>
+            {{ finding.description|linebreaksbr }}
+        </p>
+
+        <p>
+            <strong>SDLC Area:</strong>
+            {{ finding.get_category_display }}
+        </p>
+
+        <p>
+            <strong>Severity:</strong>
+            {{ finding.get_severity_display }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            {{ finding.get_status_display }}
+        </p>
+
+        <p>
+            <strong>Created By:</strong>
+            {% if finding.created_by %}
+                {{ finding.created_by.username }}
+            {% else %}
+                Not specified
+            {% endif %}
+        </p>
+
+        <p>
+            <strong>Assigned To:</strong>
+            {% if finding.assigned_to %}
+                {{ finding.assigned_to.username }}
+            {% else %}
+                Not assigned
+            {% endif %}
+        </p>
+
+        <p>
+            <strong>Date Created:</strong>
+            {{ finding.created_at|date:"d M Y, H:i" }}
+        </p>
+
+        <p>
+            <strong>Last Updated:</strong>
+            {{ finding.updated_at|date:"d M Y, H:i" }}
+        </p>
+
+    </div>
+
+    <div class="form-actions">
+        <a href="{% url 'finding_edit' finding.id %}" class="btn btn-primary">
+            Edit Finding
+        </a>
+
+        <a href="{% url 'finding_list' %}" class="btn btn-secondary">
+            Back to Dashboard
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}
